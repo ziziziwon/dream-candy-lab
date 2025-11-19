@@ -1,9 +1,8 @@
 # 🍬 Dream Candy Lab - 달콤한 젤리 실험실
 
 > **"말랑말랑 · 몽글몽글 · 반짝반짝"**  
-> **"하리보 향기나는 쿠키런 월드"**
 
-하리보 젤리의 감성과 쿠키런의 귀여움을 담은 달콤한 실험실 웹사이트입니다.
+하리보 젤리의 감성과 쿠키런의 귀여움을 벤치마케팅하여 담은 달콤한 실험실 웹사이트입니다.
 
 ![Dream Candy Lab](https://img.shields.io/badge/Dream%20Candy%20Lab-🍬-FF6F91)
 ![React](https://img.shields.io/badge/React-18-61DAFB)
