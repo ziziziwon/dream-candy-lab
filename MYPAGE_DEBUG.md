@@ -197,7 +197,7 @@ http://localhost:3000/haribo/product
 # → 상품 선택 → 장바구니 → 결제
 
 # 4. 마이페이지 확인
-http://localhost:3000/haribo/mypage
+http://localhost:3004/haribo/mypage
 ```
 
 ## 🆘 여전히 안 되는 경우
@@ -238,4 +238,5 @@ REACT_APP_FIREBASE_PROJECT_ID=...
 
 **Dream Candy Lab** 🍬
 달콤한 디버깅의 세계에 오신 것을 환영합니다!
+
 

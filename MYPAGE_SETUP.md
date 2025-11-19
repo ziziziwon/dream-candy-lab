@@ -27,7 +27,7 @@
 - 예: `👤 연구원` 클릭
 
 ### 2. 직접 URL 접근
-- `/mypage` 경로로 접근 (예: `http://localhost:3000/haribo/mypage`)
+- `/mypage` 경로로 접근 (예: `http://localhost:3004/haribo/mypage`)
 
 ## 🔥 Firebase 설정 필요사항
 
@@ -230,4 +230,5 @@ service cloud.firestore {
 
 **Dream Candy Lab** 🍬
 달콤한 코딩의 세계에 오신 것을 환영합니다!
+
 

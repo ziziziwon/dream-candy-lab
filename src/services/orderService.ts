@@ -113,3 +113,4 @@ export function getOrderStatusEmoji(status: OrderData['status']): string {
   return emojiMap[status] || '📋';
 }
 
+

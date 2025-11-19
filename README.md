@@ -110,7 +110,7 @@ npm install
 npm start
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 열기
+브라우저에서 [http://localhost:3004/haribo](http://localhost:3004/haribo) 열기
 
 ### 빌드
 
