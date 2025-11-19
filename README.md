@@ -404,6 +404,6 @@ MIT License - 자유롭게 사용하세요!
 
 ---
 
-**Made with 💕 by Dream Candy Lab Team**
+**Made By 💕 jiwon**
 
 🍬 ✨ 🧪 🌈 🍭 💳 🛒 🎉
