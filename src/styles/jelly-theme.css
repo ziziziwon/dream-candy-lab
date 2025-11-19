@@ -1,0 +1,269 @@
+/* ===== Dream Candy Lab Theme - Redesigned ===== */
+/* 🍬 New Candy Harmony - 밝고 역동적인 균형 불균형 */
+:root {
+  /* Primary Colors - 더 밝고 활력있는 팔레트 */
+  --jelly-yellow: #FFD166;
+  --jelly-pink: #FF7CA8;
+  --jelly-mint: #A8E6CF;
+  --jelly-lavender: #D0C3FF;
+  --jelly-red: #E64B4B;
+  --jelly-orange: #FFB347;
+  
+  /* Background Colors - 따뜻한 크림톤 */
+  --lab-cream: #FFF7F0;
+  --lab-cream-gradient-1: #FEE2E2;
+  --lab-cream-gradient-2: #F8F0FF;
+  --lab-glass: rgba(255, 255, 255, 0.6);
+  
+  /* Text Colors */
+  --text-choco: #3B2E2A;
+  --text-rosegray: #9E8C88;
+  
+  /* Lighting Effects - 포인트광 + 반사광 */
+  --glow-pink: rgba(255, 120, 200, 0.4);
+  --glow-mint: rgba(168, 230, 207, 0.3);
+  --glow-yellow: rgba(255, 209, 102, 0.35);
+  --shadow-jelly: 0 8px 20px rgba(255, 124, 168, 0.3);
+  --shadow-jelly-strong: 0 12px 30px rgba(255, 124, 168, 0.4);
+  
+  /* Lighting Direction - 왼쪽 상단 → 오른쪽 하단 */
+  --light-spot: radial-gradient(circle at 30% 40%, #fff4f8 0%, transparent 70%);
+}
+
+/* ===== Gradient Presets ===== */
+.gradient-jelly-primary {
+  background: linear-gradient(135deg, var(--jelly-yellow) 0%, var(--jelly-pink) 100%);
+}
+
+.gradient-jelly-soft {
+  background: radial-gradient(circle at top, var(--lab-cream) 0%, #FFE8E1 100%);
+}
+
+.gradient-jelly-mint {
+  background: linear-gradient(135deg, var(--jelly-mint) 0%, var(--jelly-lavender) 100%);
+}
+
+/* ===== Glass Effect ===== */
+.glass-panel {
+  background: var(--lab-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Animations - 리듬감 강화 ===== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-15px) translateX(5px);
+  }
+  66% {
+    transform: translateY(-25px) translateX(-5px);
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes jelly-bounce {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.08, 0.92) rotate(2deg);
+  }
+  50% {
+    transform: scale(0.92, 1.08) rotate(-2deg);
+  }
+  75% {
+    transform: scale(1.05, 0.95) rotate(1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+}
+
+@keyframes diagonal-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(30px, 20px) rotate(5deg);
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Jelly Button Effect ===== */
+.jelly-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.jelly-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.jelly-button:hover::before {
+  left: 100%;
+}
+
+.jelly-button:hover {
+  box-shadow: 0 0 30px var(--glow-pink);
+  transform: scale(1.05);
+}
+
+.jelly-button:active {
+  transform: scale(0.95);
+}
+
+/* ===== Bubble Particles ===== */
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 200, 220, 0.3));
+  border-radius: 50%;
+  animation: bubble-rise 8s ease-in infinite;
+  pointer-events: none;
+}
+
+.bubble:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 25%; width: 60px; height: 60px; animation-delay: 2s; }
+.bubble:nth-child(3) { left: 45%; width: 30px; height: 30px; animation-delay: 4s; }
+.bubble:nth-child(4) { left: 65%; width: 50px; height: 50px; animation-delay: 1s; }
+.bubble:nth-child(5) { left: 80%; width: 45px; height: 45px; animation-delay: 3s; }
+
+/* ===== Text Effects ===== */
+.text-jelly-shadow {
+  text-shadow: 
+    0 4px 6px rgba(255, 105, 180, 0.15),
+    0 2px 4px rgba(255, 182, 193, 0.2);
+}
+
+.text-jelly-glow {
+  text-shadow: 
+    0 0 10px rgba(255, 209, 0, 0.5),
+    0 0 20px rgba(255, 111, 145, 0.3);
+}
+
+/* ===== Hover Highlight Effect ===== */
+.highlight-spot {
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-spot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.highlight-spot:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ===== Card Effects ===== */
+.jelly-card {
+  background: var(--lab-glass);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 
+    0 8px 20px rgba(255, 182, 193, 0.3),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.jelly-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 12px 30px rgba(255, 182, 193, 0.4),
+    inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== Loading Animation ===== */
+.jelly-loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--jelly-yellow), var(--jelly-pink));
+  animation: bounce-soft 1s ease-in-out infinite;
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lab-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--jelly-pink), var(--jelly-yellow));
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--jelly-yellow), var(--jelly-pink));
+}
+

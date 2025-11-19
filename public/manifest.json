@@ -1,25 +1,18 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dream Candy Lab",
+  "name": "🍬 Dream Candy Lab - 달콤한 젤리 실험실",
+  "description": "말랑말랑 · 몽글몽글 · 반짝반짝 | 하리보 향기나는 쿠키런 월드",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#FFD100",
+  "background_color": "#FFF9F6",
+  "orientation": "portrait-primary",
+  "lang": "ko-KR"
 }
