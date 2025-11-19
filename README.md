@@ -396,9 +396,9 @@ MIT License - 자유롭게 사용하세요!
 
 > 💡 **Tip**: `/about` 페이지에서 11단계 제작 과정을 확인하세요!
 
-(GSAP·Framer Motion·R3F·Firebase가 동시에 사용되는 복합 구조에서
+ GSAP·Framer Motion·R3F·Firebase가 동시에 사용되는 복합 구조에서
 성능, 상태관리, 씬 전환 타이밍을 정교하게 조율하는 부분이 가장 도전적이었고,
-이를 위해 전역 상태 분리, lazy-loading, 컴포넌트 최적화를 적용했습니다.)
+이를 위해 전역 상태 분리, lazy-loading, 컴포넌트 최적화를 적용했습니다.
 
 
 ---
