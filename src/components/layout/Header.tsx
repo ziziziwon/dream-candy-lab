@@ -8,6 +8,7 @@ import AdminBadge from "../admin/AdminBadge";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const cartItems = useCartStore((state) => state.items);
@@ -31,6 +32,11 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // 페이지 이동 시 모바일 메뉴 닫기
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -119,8 +125,30 @@ export default function Header() {
           )}
         </nav>
 
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 text-text-choco"
+          aria-label="메뉴"
+        >
+          <motion.div
+            animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </motion.div>
+        </button>
+
         {/* Right Section: User + Cart */}
-        <div className="flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4">
           {/* User Auth */}
           {currentUser ? (
             <div className="flex items-center gap-3">
@@ -193,7 +221,106 @@ export default function Header() {
             </motion.div>
           </Link>
         </div>
+
+        {/* Mobile Cart Icon */}
+        <Link to="/cart" className="md:hidden">
+          <motion.div
+            className="relative"
+            whileTap={{ scale: 0.9 }}
+          >
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-jelly-pink/20 to-jelly-yellow/20 flex items-center justify-center">
+              <span className="text-xl">🧺</span>
+            </div>
+            {cartCount > 0 && (
+              <div className="absolute -top-1 -right-1 w-5 h-5 bg-jelly-red rounded-full flex items-center justify-center text-white text-xs font-number">
+                {cartCount}
+              </div>
+            )}
+          </motion.div>
+        </Link>
       </div>
+
+      {/* Mobile Menu */}
+      <motion.div
+        initial={false}
+        animate={{
+          height: isMobileMenuOpen ? 'auto' : 0,
+          opacity: isMobileMenuOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.3 }}
+        className="md:hidden overflow-hidden bg-white/95 backdrop-blur-lg"
+      >
+        <div className="px-6 py-4 space-y-4">
+          {/* Mobile Navigation Links */}
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link key={item.name} to={item.path}>
+                <div
+                  className={`py-2 px-4 rounded-lg font-body transition-all ${
+                    isActive
+                      ? 'bg-gradient-to-r from-jelly-pink to-jelly-yellow text-white'
+                      : 'text-text-choco hover:bg-jelly-yellow/10'
+                  }`}
+                >
+                  {item.name}
+                </div>
+              </Link>
+            );
+          })}
+
+          {/* Mobile Admin Link */}
+          {isAdmin && (
+            <Link to="/admin">
+              <div
+                className={`py-2 px-4 rounded-lg font-body transition-all flex items-center gap-2 ${
+                  location.pathname === '/admin'
+                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white'
+                    : 'text-text-choco hover:bg-yellow-100'
+                }`}
+              >
+                <span>👑</span>
+                <span>Admin</span>
+              </div>
+            </Link>
+          )}
+
+          {/* Mobile User Section */}
+          <div className="border-t border-gray-200 pt-4 mt-4">
+            {currentUser ? (
+              <div className="space-y-3">
+                <Link to="/mypage">
+                  <div className="py-2 px-4 rounded-lg bg-gradient-to-r from-jelly-yellow/10 to-jelly-pink/10 hover:from-jelly-yellow/20 hover:to-jelly-pink/20 transition-all flex items-center gap-2">
+                    <span className="text-lg">👤</span>
+                    <span className="font-label text-sm text-text-choco">
+                      {currentUser.displayName || '연구원'}
+                    </span>
+                  </div>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-jelly-mint/20 to-jelly-lavender/20 hover:from-jelly-mint/30 hover:to-jelly-lavender/30 transition-all font-label text-sm text-text-choco"
+                >
+                  로그아웃
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <Link to="/login">
+                  <button className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-jelly-pink/20 to-jelly-yellow/20 hover:from-jelly-pink/30 hover:to-jelly-yellow/30 transition-all font-label text-sm text-text-choco">
+                    로그인
+                  </button>
+                </Link>
+                <Link to="/signup">
+                  <button className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-jelly-pink to-jelly-yellow text-white shadow-jelly hover:shadow-xl transition-all font-label text-sm">
+                    회원가입
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </motion.div>
     </motion.header>
   );
 }

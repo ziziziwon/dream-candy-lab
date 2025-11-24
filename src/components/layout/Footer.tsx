@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -26,16 +27,31 @@ export default function Footer() {
           <div>
             <h4 className="font-title text-text-choco mb-4">바로가기</h4>
             <ul className="space-y-2 text-sm font-body">
-              {['About', 'Products', 'Lab', 'Events', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`}
-                    className="text-text-rosegray hover:text-jelly-pink transition-colors duration-300"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/" className="text-text-rosegray hover:text-jelly-pink transition-colors duration-300">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/product" className="text-text-rosegray hover:text-jelly-pink transition-colors duration-300">
+                  Product
+                </Link>
+              </li>
+              <li>
+                <Link to="/lab" className="text-text-rosegray hover:text-jelly-pink transition-colors duration-300">
+                  Lab
+                </Link>
+              </li>
+              <li>
+                <Link to="/contest" className="text-text-rosegray hover:text-jelly-pink transition-colors duration-300">
+                  Contest
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-text-rosegray hover:text-jelly-pink transition-colors duration-300">
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -64,8 +80,8 @@ export default function Footer() {
             © {currentYear} Dream Candy Lab. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-text-rosegray font-body">
-            <a href="#" className="hover:text-jelly-pink transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-jelly-pink transition-colors">Terms of Service</a>
+            <Link to="/about" className="hover:text-jelly-pink transition-colors">About Us</Link>
+            <Link to="/cart" className="hover:text-jelly-pink transition-colors">Shopping Cart</Link>
           </div>
         </div>
       </div>
