@@ -20,7 +20,7 @@ interface DirectPurchaseState {
 export default function Checkout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { items: cartItems, getTotalPrice, clearCart, updateQuantity } = useCartStore();
+  const { items: cartItems, clearCart, updateQuantity } = useCartStore();
   const { width, height } = useWindowSize();
   const { currentUser } = useAuth();
   

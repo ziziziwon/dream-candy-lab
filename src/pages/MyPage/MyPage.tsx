@@ -6,7 +6,7 @@ import Container from "../../components/layout/Container";
 import ParticleSparkle from "../../components/motion/ParticleSparkle";
 import { getUserOrders, OrderData, getOrderStatusText, getOrderStatusEmoji } from "../../services/orderService";
 import { getMyJellies, JellyData, deleteJelly } from "../../services/jellyService";
-import { getJellyEmoji, JellyProduct } from "../../types/jellyProduct";
+import { JellyProduct } from "../../types/jellyProduct";
 import { useCartStore } from "../../stores/useCartStore";
 
 type TabType = 'orders' | 'jellies' | 'profile';
@@ -28,6 +28,7 @@ export default function MyPage() {
     }
 
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser, navigate]);
 
   const loadData = async () => {

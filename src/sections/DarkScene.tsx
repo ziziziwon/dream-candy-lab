@@ -1,5 +1,5 @@
 import React, { Suspense, useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -158,40 +158,40 @@ export default function DarkScene() {
   );
 }
 
-// 다크 젤리 모델 (실제로는 gummy3.glb를 로드)
-function DarkJellyModel() {
-  const meshRef = useRef<THREE.Mesh>(null!);
+// 다크 젤리 모델 (실제로는 gummy3.glb를 로드) - 현재 미사용
+// function DarkJellyModel() {
+//   const meshRef = useRef<THREE.Mesh>(null!);
 
-  useFrame(({ clock }) => {
-    if (!meshRef.current) return;
-    const t = clock.getElapsedTime();
+//   useFrame(({ clock }) => {
+//     if (!meshRef.current) return;
+//     const t = clock.getElapsedTime();
     
-    // 회전
-    meshRef.current.rotation.y = t * 0.2;
-    meshRef.current.rotation.x = Math.sin(t * 0.5) * 0.1;
+//     // 회전
+//     meshRef.current.rotation.y = t * 0.2;
+//     meshRef.current.rotation.x = Math.sin(t * 0.5) * 0.1;
     
-    // 부유
-    meshRef.current.position.y = Math.sin(t * 0.8) * 0.1;
-  });
+//     // 부유
+//     meshRef.current.position.y = Math.sin(t * 0.8) * 0.1;
+//   });
 
-  return (
-    <mesh ref={meshRef}>
-      {/* 임시 다크 젤리 형태 */}
-      <dodecahedronGeometry args={[0.8, 0]} />
-      <meshPhysicalMaterial
-        color="#2B1E34"
-        emissive="#8B5CF6"
-        emissiveIntensity={0.3}
-        roughness={0.2}
-        metalness={0.8}
-        clearcoat={1}
-        clearcoatRoughness={0.1}
-        transparent
-        opacity={0.9}
-      />
-    </mesh>
-  );
-}
+//   return (
+//     <mesh ref={meshRef}>
+//       {/* 임시 다크 젤리 형태 */}
+//       <dodecahedronGeometry args={[0.8, 0]} />
+//       <meshPhysicalMaterial
+//         color="#2B1E34"
+//         emissive="#8B5CF6"
+//         emissiveIntensity={0.3}
+//         roughness={0.2}
+//         metalness={0.8}
+//         clearcoat={1}
+//         clearcoatRoughness={0.1}
+//         transparent
+//         opacity={0.9}
+//       />
+//     </mesh>
+//   );
+// }
 
 // 로딩 플레이스홀더
 function DarkJellyPlaceholder() {
